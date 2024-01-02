@@ -1,3 +1,4 @@
+'This code will sort all the worksheet A-Z
 Sub SortWorkSheetsAZ()
 Application.ScreenUpdating = False
 Dim ShCount As Integer, i As Integer, j As Integer
@@ -10,4 +11,17 @@ End If
 Next j
 Next i
 Application.ScreenUpdating = True
+End Sub
+
+'This code will insert a row above every row in the selection
+Sub InsertAlternateRows()
+Dim rng As Range
+Dim CountRow As Integer
+Dim i As Integer
+Set rng = Selection
+CountRow = rng.EntireRow.Count
+For i = 1 To CountRow
+ActiveCell.EntireRow.Insert
+ActiveCell.Offset(2, 0).Select
+Next i
 End Sub
