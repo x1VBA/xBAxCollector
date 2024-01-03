@@ -12,7 +12,6 @@ Next j
 Next i
 Application.ScreenUpdating = True
 End Sub
-
 'This code will insert a row above every row in the selection
 Sub InsertAlternateRows()
 Dim rng As Range
@@ -25,3 +24,17 @@ ActiveCell.EntireRow.Insert
 ActiveCell.Offset(2, 0).Select
 Next i
 End Sub
+'This code will refresh all the Pivot Table in the Workbook
+Sub RefreshAllPivotTables()
+Dim PT As PivotTable
+For Each PT In ActiveSheet.PivotTables
+PT.RefreshTable
+Next PT
+End Sub
+'This code auto refreshes a selected Pivot Table
+Private Sub Worksheet_Change(ByVal Target As Range)
+Worksheets("Sheet1").PivotTables("PivotTable1").PivotCache.Refresh
+'Change "PivotTable1" to correct pivot table name
+'Change "Sheet1" to correct Sheet location of your pivot table
+End Sub
+
